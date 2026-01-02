@@ -1,4 +1,4 @@
-package com.example.intro_firebase.modeldata
+package com.example.questfirebase_152.modeldata
 
 data class Siswa (
     val id : Long = 0,

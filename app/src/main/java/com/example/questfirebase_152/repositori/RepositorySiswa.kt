@@ -1,30 +1,22 @@
 package com.example.questfirebase_152.repositori
+
 import com.example.questfirebase_152.modeldata.Siswa
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
-/**
- * Interface repository untuk mengelola operasi data siswa.
- */
 interface RepositorySiswa {
-    /**
-     * Mengambil semua data siswa dari sumber data.
-     */
-    suspend fun getDataSiswa(): List<Siswa>
-
-    /**
-     * Menyimpan data siswa baru atau memperbarui yang sudah ada.
-     */
+    suspend fun getDataSiswa() : List<Siswa>
     suspend fun postDataSiswa(siswa: Siswa)
 }
 
 class FirebaseRepositorySiswa : RepositorySiswa {
     private val db = FirebaseFirestore.getInstance()
-    private val collection = db.collection("siswa")
+    private  val collection = db.collection("siswa")
 
     override suspend fun getDataSiswa(): List<Siswa> {
         return try {
-            collection.get().await().documents.map { doc ->
+            collection.get().await().documents.map {
+                    doc ->
                 Siswa(
                     id = doc.getLong("id")?.toLong() ?: 0,
                     nama = doc.getString("nama") ?: "",
@@ -32,7 +24,7 @@ class FirebaseRepositorySiswa : RepositorySiswa {
                     telpon = doc.getString("telpon") ?: ""
                 )
             }
-        } catch (e: Exception) {
+        } catch (e : Exception) {
             emptyList()
         }
     }
@@ -47,4 +39,5 @@ class FirebaseRepositorySiswa : RepositorySiswa {
         )
         docRef.set(data).await()
     }
+
 }

@@ -3,7 +3,7 @@ package com.example.questfirebase_152.repositori
 import android.app.Application
 
 interface ContainerApp {
-    val repositorySiswa: RepositorySiswa
+    val repositorySiswa : RepositorySiswa
 }
 
 class DefaultContainerApp : ContainerApp {
@@ -13,7 +13,7 @@ class DefaultContainerApp : ContainerApp {
 }
 
 class AplikasiDataSiswa : Application() {
-    lateinit var container: ContainerApp
+    lateinit var container : ContainerApp
     override fun onCreate() {
         super.onCreate()
         this.container = DefaultContainerApp()
