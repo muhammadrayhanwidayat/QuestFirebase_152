@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "585042261762",
+    "project_id": "praktikumpam-8132b",
+    "storage_bucket": "praktikumpam-8132b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585042261762:android:fc8fb596195a1e755e341b",
+        "android_client_info": {
+          "package_name": "com.example.questfirebase_152"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgMWviTDQvzHR8G4B_MMmObbkGehdLSkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
