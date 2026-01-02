@@ -20,4 +20,12 @@ data class DetailSiswa(
     val nama: String = "",
     val alamat: String = "",
     val telpon: String = ""
-)
+){
+    /**
+     * Memvalidasi apakah data siswa valid (tidak kosong).
+     */
+    fun isValid(): Boolean {
+        return nama.isNotBlank() && alamat.isNotBlank() && telpon.isNotBlank()
+    }
+}
+
