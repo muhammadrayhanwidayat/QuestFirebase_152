@@ -14,8 +14,11 @@ import com.example.questfirebase_152.repositori.RepositorySiswa
 import com.example.questfirebase_152.view.route.DestinasiDetail
 import kotlinx.coroutines.launch
 
-class EditViewModel(savedStateHandle: SavedStateHandle, private val repositorySiswa: RepositorySiswa) : ViewModel() {
-    var uiStateSiswa by mutableStateOf(UIStateSiswa())
+class EditViewModel(
+    savedStateHandle: SavedStateHandle,
+    private val repositorySiswa: RepositorySiswa
+) : ViewModel() {
+    var uiStateSiswa by mutableStateOf(value = UIStateSiswa())
         private set
 
     private val idSiswa: Long =
@@ -31,19 +34,27 @@ class EditViewModel(savedStateHandle: SavedStateHandle, private val repositorySi
 
     fun updateUiState(detailSiswa: DetailSiswa) {
         uiStateSiswa =
-            UIStateSiswa(detailSiswa = detailSiswa, isEntryValid = validasiInput(detailSiswa))
+            UIStateSiswa(
+                detailSiswa = detailSiswa,
+                isEntryValid = validasiInput(detailSiswa)
+            )
     }
 
-    private fun validasiInput(uiState: DetailSiswa = uiStateSiswa.detailSiswa ): Boolean {
+    private fun validasiInput(
+        uiState: DetailSiswa = uiStateSiswa.detailSiswa
+    ): Boolean {
         return with(uiState) {
             nama.isNotBlank() && alamat.isNotBlank() && telpon.isNotBlank()
         }
     }
 
-    suspend fun editSatuSiswa(){
-        if (validasiInput(uiStateSiswa.detailSiswa)){
+    suspend fun editSatuSiswa() {
+        if (validasiInput(uiStateSiswa.detailSiswa)) {
             try {
-                repositorySiswa.editSatuSiswa(idSiswa,uiStateSiswa.detailSiswa.toDataSiswa())
+                repositorySiswa.editSatuSiswa(
+                    idSiswa,
+                    uiStateSiswa.detailSiswa.toDataSiswa()
+                )
                 println("Update Sukses: $idSiswa")
             } catch (e: Exception) {
                 println("Update Error: ${e.message}")
